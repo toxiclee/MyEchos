@@ -1,4 +1,4 @@
-###Concept
+Concept
 
 This project explores the idea that spaces can hold emotional residue.
 
