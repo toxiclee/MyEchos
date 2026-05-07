@@ -39,3 +39,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Over GitHub's 100MB limit — keep locally or host elsewhere; scene still loads if file exists
+public/models/shidizai.glb

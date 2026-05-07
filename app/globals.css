@@ -24,3 +24,282 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Landing: cinematic atmosphere (MyEchos) */
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes landing-drift-a {
+    0%,
+    100% {
+      transform: translate(0%, 0%) scale(1);
+    }
+    33% {
+      transform: translate(2.2%, -1.4%) scale(1.03);
+    }
+    66% {
+      transform: translate(-1.6%, 1.8%) scale(0.98);
+    }
+  }
+
+  @keyframes landing-drift-b {
+    0%,
+    100% {
+      transform: translate(0%, 0%) scale(1);
+    }
+    40% {
+      transform: translate(-2%, 2%) scale(1.04);
+    }
+    70% {
+      transform: translate(1.2%, -1%) scale(0.97);
+    }
+  }
+
+  @keyframes landing-drift-c {
+    0%,
+    100% {
+      transform: translate(0, 0) scale(1);
+      opacity: 0.85;
+    }
+    50% {
+      transform: translate(1.8%, -2.2%) scale(1.06);
+      opacity: 1;
+    }
+  }
+
+  @keyframes landing-bloom {
+    0%,
+    100% {
+      opacity: 0.72;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.92;
+      transform: scale(1.05);
+    }
+  }
+
+  @keyframes landing-bloom-soft {
+    0%,
+    100% {
+      opacity: 0.45;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.7;
+      transform: scale(1.08);
+    }
+  }
+
+  @keyframes landing-grain-shift {
+    0% {
+      transform: translate(0, 0);
+    }
+    25% {
+      transform: translate(-2.5%, 1.5%);
+    }
+    50% {
+      transform: translate(1.8%, -2%);
+    }
+    75% {
+      transform: translate(-1.2%, -1.2%);
+    }
+    100% {
+      transform: translate(0, 0);
+    }
+  }
+
+  @keyframes landing-particle-drift {
+    0% {
+      transform: translate(0, 0);
+      opacity: 0.1;
+    }
+    18% {
+      opacity: 0.38;
+    }
+    100% {
+      transform: translate(var(--landing-dx, 0), var(--landing-dy, -40px));
+      opacity: 0.08;
+    }
+  }
+
+  .landing-atmo-drift-a {
+    animation: landing-drift-a 56s ease-in-out infinite;
+  }
+
+  .landing-atmo-drift-b {
+    animation: landing-drift-b 64s ease-in-out infinite;
+  }
+
+  .landing-atmo-drift-c {
+    animation: landing-drift-c 72s ease-in-out infinite;
+  }
+
+  .landing-atmo-bloom {
+    animation: landing-bloom 22s ease-in-out infinite;
+  }
+
+  .landing-atmo-bloom-soft {
+    animation: landing-bloom-soft 28s ease-in-out infinite;
+  }
+
+  .landing-atmo-grain {
+    animation: landing-grain-shift 18s steps(6) infinite;
+  }
+
+  .landing-atmo-particle {
+    animation-name: landing-particle-drift;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+  }
+}
+
+/* 3D room: small floating memory scraps */
+@keyframes myechos-paper-float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(var(--paper-rot, -1.2deg));
+  }
+  50% {
+    transform: translateY(-3px) rotate(calc(var(--paper-rot, -1.2deg) + 0.35deg));
+  }
+}
+
+@keyframes myechos-paper-appear {
+  from {
+    opacity: 0;
+    filter: none;
+  }
+  to {
+    opacity: 1;
+    filter: none;
+  }
+}
+
+@keyframes myechos-paper-bloom {
+  0% {
+    opacity: 0;
+    filter: saturate(0.96);
+    transform: translateX(var(--paper-shift-x, 0px)) translateY(2px) scale(0.94)
+      rotate(calc(var(--paper-rot, -1.2deg) - 0.3deg));
+  }
+  45% {
+    opacity: 0.88;
+    filter: saturate(1);
+  }
+  100% {
+    opacity: 1;
+    filter: saturate(1);
+    transform: translateX(var(--paper-shift-x, 0px)) translateY(0) scale(1) rotate(var(--paper-rot, -1.2deg));
+  }
+}
+
+@keyframes myechos-paper-caret {
+  50% {
+    opacity: 0;
+  }
+}
+
+.myechos-memory-paper {
+  --paper-rot: -1.35deg;
+  max-width: 11.5rem;
+  padding: 0.5rem 0.62rem 0.55rem;
+  border-radius: 3px 5px 4px 3px / 4px 3px 5px 4px;
+  background:
+    linear-gradient(152deg, rgba(255, 252, 246, 0.94) 0%, rgba(244, 248, 238, 0.88) 45%, rgba(250, 245, 236, 0.9) 100%),
+    repeating-linear-gradient(88deg, rgba(75, 95, 70, 0.028) 0 1px, transparent 1px 4px),
+    rgba(252, 250, 244, 0.76);
+  box-shadow:
+    0 12px 32px rgba(55, 60, 45, 0.11),
+    0 2px 8px rgba(55, 60, 45, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.58);
+  clip-path: polygon(
+    2% 6%,
+    10% 0%,
+    30% 2%,
+    54% 0%,
+    80% 4%,
+    97% 1%,
+    100% 14%,
+    98% 40%,
+    100% 64%,
+    96% 90%,
+    80% 98%,
+    52% 100%,
+    22% 98%,
+    4% 90%,
+    0% 54%,
+    3% 24%
+  );
+}
+
+.myechos-memory-paper--whisper {
+  max-width: 5.4rem;
+  padding: 0.22rem 0.28rem 0.24rem;
+  box-shadow:
+    0 5px 12px rgba(40, 30, 24, 0.1),
+    0 1px 3px rgba(40, 30, 24, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.55);
+  opacity: 0.92;
+}
+
+.myechos-memory-paper--whisper.myechos-memory-paper--pinned {
+  box-shadow:
+    0 8px 20px rgba(40, 30, 24, 0.13),
+    0 2px 5px rgba(40, 30, 24, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.55);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .myechos-memory-paper {
+    animation:
+      myechos-paper-appear 0.75s ease-out both,
+      myechos-paper-float 5.4s ease-in-out infinite 0.35s;
+  }
+
+  .myechos-memory-paper--whisper {
+    animation:
+      myechos-paper-bloom 1.1s ease-out both,
+      myechos-paper-float 6.8s ease-in-out infinite 0.7s;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .myechos-memory-paper {
+    animation: myechos-paper-appear 0.35s ease-out both;
+  }
+}
+
+.myechos-memory-paper--pinned {
+  box-shadow:
+    0 14px 34px rgba(40, 30, 24, 0.17),
+    0 3px 8px rgba(40, 30, 24, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.62);
+}
+
+.myechos-memory-paper--hover {
+  opacity: 0.9;
+}
+
+.myechos-memory-paper__text {
+  margin: 0;
+  font-family: var(--font-caveat), "Segoe Print", cursive;
+  font-size: 0.8125rem;
+  line-height: 1.38;
+  letter-spacing: 0.018em;
+  color: #5a5348;
+  white-space: pre-line;
+}
+
+.myechos-memory-paper__text--whisper {
+  font-size: 0.68rem;
+  line-height: 1.34;
+  letter-spacing: 0.01em;
+  color: #3f392f;
+  text-shadow: none;
+}
+
+.myechos-memory-paper__caret {
+  min-height: 1em;
+  margin-left: 1px;
+  border-left: 1px solid rgba(107, 83, 69, 0.42);
+  animation: myechos-paper-caret 0.85s step-end infinite;
+}
